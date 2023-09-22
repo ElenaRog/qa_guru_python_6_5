@@ -2,6 +2,7 @@ from pathlib import Path
 from selene.support.shared import browser
 from selene import have, be
 from tests import picture
+import tests
 
 
 def test_student_registration_form():
@@ -31,8 +32,9 @@ def test_student_registration_form():
         have.exact_text('Agra')
     ).click()
 
+
     browser.element('#uploadPicture').set_value(
-        str(Path(picture.__file__).parent.joinpath('image.png').absolute())
+        str(Path(__file__).absolute().parent.joinpath('picture', 'image.png'))
     )
 
     browser.element('#currentAddress').type('Baker st. 221B')
